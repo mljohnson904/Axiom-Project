@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Axiom Prospect Builder</title>
+  <style>
+    :root {
+      --bg: #0a0f1a;
+      --bg-soft: #111a2b;
+      --card: #131f33;
+      --card-2: #182742;
+      --text: #f4f0e6;
+      --muted: #b5b2aa;
+      --gold: #d4af37;
+      --gold-soft: #f1d98b;
+      --danger: #db4a4a;
+      --ok: #2db56d;
+      --radius: 14px;
+      --shadow: 0 12px 30px rgba(0,0,0,.25);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #070b14 0%, #0a0f1a 100%);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.4;
+    }
+
+    .container {
+      width: min(1100px, 94vw);
+      margin: 20px auto 60px;
+    }
+
+    .hero {
+      background: linear-gradient(130deg, var(--card), var(--card-2));
+      border: 1px solid rgba(212,175,55,.3);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    h1 { margin: 0 0 8px; font-size: clamp(1.4rem, 2.6vw, 2rem); }
+    h2 { margin: 0 0 12px; font-size: 1.1rem; color: var(--gold-soft); }
+    h3 { margin: 0 0 8px; font-size: 1rem; color: var(--gold-soft); }
+    p, label, small { color: var(--muted); }
+
+    .grid { display: grid; gap: 12px; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+
+    .card {
+      background: var(--bg-soft);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .stat {
+      padding: 10px;
+      border-radius: 10px;
+      background: #0d1523;
+      border: 1px solid rgba(212,175,55,.2);
+    }
+    .stat strong { display: block; font-size: 1.25rem; color: var(--gold-soft); }
+    .stat span { font-size: .8rem; color: var(--muted); }
+
+    input, select, textarea, button {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: #0e1728;
+      color: var(--text);
+      padding: 10px 12px;
+      font: inherit;
+    }
+    textarea { min-height: 88px; resize: vertical; }
+
+    button {
+      cursor: pointer;
+      border-color: rgba(212,175,55,.45);
+      background: linear-gradient(180deg, #d4af37, #b8932b);
+      color: #101010;
+      font-weight: 700;
+    }
+
+    .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn-row button { width: auto; }
+    .btn-muted {
+      background: #12203a;
+      border-color: rgba(255,255,255,.2);
+      color: var(--text);
+      font-weight: 600;
+    }
+    .btn-danger {
+      background: linear-gradient(180deg, #de6262, #b24040);
+      color: #fff;
+      border-color: rgba(255,255,255,.2);
+    }
+
+    .checkbox-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #0d1523;
+      padding: 8px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .checkbox-item input { width: auto; }
+
+    .table-wrap { overflow: auto; border-radius: 10px; border: 1px solid rgba(255,255,255,.12); }
+    table { width: 100%; border-collapse: collapse; min-width: 980px; }
+    th, td { text-align: left; padding: 9px; border-bottom: 1px solid rgba(255,255,255,.09); font-size: .9rem; }
+    th { color: var(--gold-soft); background: #0d1523; position: sticky; top: 0; }
+
+    .chip {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 3px 8px;
+      border: 1px solid rgba(212,175,55,.35);
+      font-size: .75rem;
+      color: var(--gold-soft);
+      margin: 2px;
+    }
+
+    .template {
+      background: #0c1321;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 12px;
+      white-space: pre-wrap;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .85rem;
+      color: #e9e4d8;
+    }
+
+    .section-title { margin-bottom: 8px; }
+
+    @media (min-width: 740px) {
+      .grid-2 { grid-template-columns: 1fr 1fr; }
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+      .stats { grid-template-columns: repeat(7, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <h1>Axiom Prospect Builder</h1>
+      <p>Mobile-first prospecting and outreach tracker for Axiom AI Systems.</p>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">Dashboard</h2>
+      <div class="stats" id="stats"></div>
+    </section>
+
+    <div class="grid grid-2" style="margin-top:12px;">
+      <section class="card">
+        <h2>Add / Edit Prospect</h2>
+        <form id="prospectForm" class="grid grid-2">
+          <input type="hidden" id="editId" />
+          <input id="businessName" placeholder="Business Name" required />
+          <input id="ownerName" placeholder="Owner / Contact Name" />
+          <input id="businessType" list="typeList" placeholder="Business Type" required />
+          <input id="city" list="cityList" placeholder="City" required />
+          <input id="website" placeholder="Website" />
+          <input id="socialLink" placeholder="Facebook / LinkedIn" />
+          <input id="email" placeholder="Email" type="email" />
+          <input id="phone" placeholder="Phone" />
+          <select id="source">
+            <option>Google Maps</option><option>Facebook</option><option>LinkedIn</option><option>Chamber</option><option>Referral</option><option>Other</option>
+          </select>
+          <select id="contactMethod">
+            <option>Facebook DM</option><option>LinkedIn DM</option><option>Email</option><option>Phone</option><option>Other</option>
+          </select>
+          <input id="painPointGuess" placeholder="Pain Point Guess" />
+          <input id="aiAngle" placeholder="AI System Angle" />
+          <select id="status">
+            <option>Not Contacted</option><option>Message Sent</option><option>Replied</option><option>Form Sent</option><option>Form Completed</option><option>Audit Offered</option><option>Audit Sold</option><option>Not Interested</option>
+          </select>
+          <input id="messageSentDate" type="date" />
+          <input id="followUpDate" type="date" />
+          <textarea id="notes" placeholder="Notes" style="grid-column:1/-1"></textarea>
+          <div class="btn-row" style="grid-column:1/-1">
+            <button type="submit">Save Prospect</button>
+            <button type="button" class="btn-muted" id="resetForm">Clear</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Search Helper</h2>
+        <div class="grid grid-2">
+          <select id="searchCategory"></select>
+          <select id="searchLocation"></select>
+        </div>
+        <div class="btn-row" style="margin-top:8px;"><button id="generateSearch" class="btn-muted">Generate Search Phrases</button></div>
+        <div id="searchResults" class="grid" style="margin-top:8px;"></div>
+      </section>
+    </div>
+
+    <div class="grid grid-2" style="margin-top:12px;">
+      <section class="card">
+        <h2>Pain Point Selector</h2>
+        <div id="painPointList" class="checkbox-list"></div>
+      </section>
+      <section class="card">
+        <h2>AI System Angle Selector</h2>
+        <div id="angleList" class="checkbox-list"></div>
+      </section>
+    </div>
+
+    <div class="grid grid-2" style="margin-top:12px;">
+      <section class="card">
+        <h2>Outreach Message Generator</h2>
+        <div class="grid grid-2">
+          <select id="messageType">
+            <option value="general">General Cold Outreach</option>
+            <option value="coach">Coaches / Trainers / Instructors</option>
+            <option value="service">Local Service Businesses</option>
+            <option value="followup">Follow-up Message</option>
+          </select>
+          <input id="messageBusinessType" placeholder="Business type context" />
+        </div>
+        <div class="btn-row" style="margin-top:8px;"><button id="generateMessage" class="btn-muted">Generate Message</button><button id="copyMessage">Copy Message</button></div>
+        <textarea id="messageOutput" style="margin-top:8px;min-height:230px;"></textarea>
+      </section>
+
+      <section class="card">
+        <h2>Template Generator</h2>
+        <h3>Prospect Notes</h3>
+        <div id="prospectTemplate" class="template"></div>
+        <div class="btn-row" style="margin:8px 0 14px;"><button class="btn-muted" id="copyProspectTemplate">Copy Prospect Notes</button></div>
+        <h3>AI Systems Audit Report Outline</h3>
+        <div id="auditTemplate" class="template"></div>
+        <div class="btn-row" style="margin-top:8px;"><button class="btn-muted" id="copyAuditTemplate">Copy Audit Outline</button></div>
+      </section>
+    </div>
+
+    <section class="card" style="margin-top:12px;">
+      <h2>Prospect Tracker Table</h2>
+      <div class="grid grid-3">
+        <input id="tableSearch" placeholder="Search prospects" />
+        <select id="filterCity"><option value="">All Cities</option></select>
+        <select id="filterType"><option value="">All Business Types</option></select>
+      </div>
+      <div style="margin-top:8px" class="grid grid-3">
+        <select id="filterStatus"><option value="">All Statuses</option></select>
+        <button id="exportCsv" class="btn-muted">Export All to CSV</button>
+        <button id="markDueDone" class="btn-muted">Mark Follow-Ups Complete (filtered)</button>
+      </div>
+      <div class="table-wrap" style="margin-top:10px;">
+        <table>
+          <thead><tr><th>Business</th><th>Owner</th><th>Type</th><th>City</th><th>Status</th><th>Contact</th><th>Follow-Up</th><th>Pain Point</th><th>AI Angle</th><th>Actions</th></tr></thead>
+          <tbody id="prospectRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <datalist id="typeList"></datalist>
+    <datalist id="cityList"></datalist>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'axiom_prospects_v1';
+    const categories = [
+      'Sports coaches and instructors','Batting/pitching instructors','Personal trainers and fitness coaches','Tutors and education services','Cleaning companies','Lawn care and landscaping','Mobile detailers','Pressure washing companies','Photographers','Realtors','Handyman services and small contractors','Veteran-owned businesses','Local service providers'
+    ];
+    const locations = ['Sumter, SC','Dalzell, SC','Shaw AFB area','Manning, SC','Bishopville, SC','Camden, SC','Columbia, SC','Lexington, SC','Irmo, SC','Florence, SC','Orangeburg, SC','Hartsville, SC'];
+    const painPoints = ['Scheduling looks manual','No intake form','Posts say DM to book','Likely repeats customer questions','Needs lead follow-up','Needs review request workflow','Needs quote/estimate workflow','Needs client tracking','Needs content planning','Uses scattered tools','No visible system'];
+    const aiAngles = ['Lead follow-up system','Client intake system','FAQ response assistant','Booking/reminder workflow','Quote/estimate workflow','Customer review system','Content planning system','Client tracking system','SOP/checklist builder','AI message response assistant'];
+
+    let prospects = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+
+    const byId = id => document.getElementById(id);
+    const escapeCsv = val => `"${String(val ?? '').replaceAll('"', '""')}"`;
+    const save = () => localStorage.setItem(STORAGE_KEY, JSON.stringify(prospects));
+
+    function populateSelectors() {
+      [byId('searchCategory'), byId('typeList')].forEach(el => {
+        categories.forEach(c => {
+          const o = document.createElement('option'); o.value = c; if (el.tagName === 'SELECT') o.textContent = c; el.appendChild(o);
+        });
+      });
+      [byId('searchLocation'), byId('cityList')].forEach(el => {
+        locations.forEach(c => { const o = document.createElement('option'); o.value = c; if (el.tagName === 'SELECT') o.textContent = c; el.appendChild(o); });
+      });
+      const statusList = ['Not Contacted','Message Sent','Replied','Form Sent','Form Completed','Audit Offered','Audit Sold','Not Interested'];
+      statusList.forEach(s => { const o = document.createElement('option'); o.value = s; o.textContent = s; byId('filterStatus').appendChild(o); });
+
+      painPoints.forEach((p,i) => byId('painPointList').insertAdjacentHTML('beforeend', `<label class="checkbox-item"><input type="checkbox" value="${p}" id="pp${i}"> ${p}</label>`));
+      aiAngles.forEach((a,i) => byId('angleList').insertAdjacentHTML('beforeend', `<label class="checkbox-item"><input type="checkbox" value="${a}" id="aa${i}"> ${a}</label>`));
+    }
+
+    function stats() {
+      const today = new Date().toISOString().slice(0,10);
+      const data = {
+        'Total prospects': prospects.length,
+        'Messages sent': prospects.filter(p => p.status === 'Message Sent').length,
+        'Replies received': prospects.filter(p => p.status === 'Replied').length,
+        'Forms sent': prospects.filter(p => p.status === 'Form Sent').length,
+        'Forms completed': prospects.filter(p => p.status === 'Form Completed').length,
+        'Paid audits': prospects.filter(p => p.status === 'Audit Sold').length,
+        'Follow-ups due': prospects.filter(p => p.followUpDate && p.followUpDate <= today).length,
+      };
+      byId('stats').innerHTML = Object.entries(data).map(([k,v]) => `<div class="stat"><strong>${v}</strong><span>${k}</span></div>`).join('');
+    }
+
+    function currentFilters() {
+      return {
+        q: byId('tableSearch').value.trim().toLowerCase(),
+        city: byId('filterCity').value,
+        type: byId('filterType').value,
+        status: byId('filterStatus').value,
+      };
+    }
+
+    function filteredProspects() {
+      const {q, city, type, status} = currentFilters();
+      return prospects.filter(p => {
+        const blob = Object.values(p).join(' ').toLowerCase();
+        return (!q || blob.includes(q)) && (!city || p.city === city) && (!type || p.businessType === type) && (!status || p.status === status);
+      });
+    }
+
+    function renderTable() {
+      const data = filteredProspects();
+      byId('prospectRows').innerHTML = data.map(p => `
+        <tr>
+          <td>${p.businessName}</td><td>${p.ownerName || ''}</td><td>${p.businessType}</td><td>${p.city}</td>
+          <td><span class="chip">${p.status}</span></td><td>${p.contactMethod || ''}</td><td>${p.followUpDate || ''}</td>
+          <td>${p.painPointGuess || ''}</td><td>${p.aiAngle || ''}</td>
+          <td>
+            <div class="btn-row">
+              <button class="btn-muted" onclick="editProspect('${p.id}')">Edit</button>
+              <button class="btn-muted" onclick="copyRowMessage('${p.id}')">Copy Msg</button>
+              <button class="btn-muted" onclick="completeFollowUp('${p.id}')">FU Done</button>
+              <button class="btn-danger" onclick="deleteProspect('${p.id}')">Delete</button>
+            </div>
+          </td>
+        </tr>`).join('');
+
+      const uniqueCities = [...new Set(prospects.map(p => p.city).filter(Boolean))];
+      const uniqueTypes = [...new Set(prospects.map(p => p.businessType).filter(Boolean))];
+      byId('filterCity').innerHTML = '<option value="">All Cities</option>' + uniqueCities.map(v => `<option ${v===byId('filterCity').value?'selected':''}>${v}</option>`).join('');
+      byId('filterType').innerHTML = '<option value="">All Business Types</option>' + uniqueTypes.map(v => `<option ${v===byId('filterType').value?'selected':''}>${v}</option>`).join('');
+    }
+
+    function resetForm() { byId('prospectForm').reset(); byId('editId').value=''; }
+
+    function getGeneratedMessage(type) {
+      const pain = [...document.querySelectorAll('#painPointList input:checked')].map(x=>x.value).join(', ');
+      const bt = byId('messageBusinessType').value.trim();
+      const suffix = (pain || bt) ? `\n\nContext noted: ${[bt, pain].filter(Boolean).join(' | ')}.` : '';
+      const templates = {
+        general: `Hey, I’m Michael with Axiom AI Systems here in South Carolina.\n\nI help small business owners simplify repetitive tasks like customer questions, follow-ups, scheduling, intake forms, and admin work using practical AI workflows and automation.\n\nI noticed your business looks like it may handle a lot through messages and manual follow-up.\n\nWould it be okay if I sent over a short intake form for a founder-rate AI Systems Audit? It helps identify where your workflow could save time.${suffix}`,
+        coach: `Hey, I’m Michael with Axiom AI Systems.\n\nI’m working with small business owners, coaches, and instructors to find repetitive tasks that can be simplified with AI, automation, or better workflows.\n\nFor coaches and instructors, that usually means things like scheduling, parent/client messages, session planning, follow-ups, reminders, and tracking client progress.\n\nI’m opening a few founder-rate AI Systems Audits and thought your business may be a good fit.\n\nWould it be okay if I sent over the short intake form?${suffix}`,
+        service: `Hey, I’m Michael with Axiom AI Systems.\n\nI help local service businesses simplify repetitive admin work like quote requests, customer follow-ups, scheduling, review requests, reminders, and common customer questions.\n\nI’m opening a few founder-rate AI Systems Audits for small businesses in the area.\n\nWould it be okay if I sent over the short intake form to see where your workflow could save time?${suffix}`,
+        followup: `Hey, just wanted to follow up on this.\n\nI’m still opening a few founder-rate AI Systems Audits for local small businesses. The intake form only takes a few minutes and helps identify where repetitive work, follow-up, scheduling, or admin tasks could be simplified.\n\nWould you like me to send it over?${suffix}`,
+      };
+      return templates[type] || templates.general;
+    }
+
+    function copy(text){ navigator.clipboard.writeText(text); }
+
+    window.editProspect = id => {
+      const p = prospects.find(x => x.id === id); if (!p) return;
+      Object.entries(p).forEach(([k,v]) => byId(k) && (byId(k).value = v || ''));
+      byId('editId').value = p.id;
+      window.scrollTo({top:0, behavior:'smooth'});
+    };
+    window.deleteProspect = id => { prospects = prospects.filter(p => p.id !== id); save(); refresh(); };
+    window.completeFollowUp = id => {
+      const p = prospects.find(x => x.id === id); if (!p) return;
+      p.followUpDate = ''; p.notes = (p.notes ? p.notes + '\n' : '') + 'Follow-up completed.';
+      save(); refresh();
+    };
+    window.copyRowMessage = id => {
+      const p = prospects.find(x => x.id === id); if (!p) return;
+      const msg = getGeneratedMessage(p.businessType.toLowerCase().includes('coach') || p.businessType.toLowerCase().includes('trainer') ? 'coach' : 'service');
+      copy(msg);
+    };
+
+    function exportCsv() {
+      const headers = ['Business Name','Owner Name','Business Type','City','Website','Social Link','Email','Phone','Source','Pain Point Guess','AI System Angle','Contact Method','Status','Message Sent Date','Follow-Up Date','Notes'];
+      const rows = prospects.map(p => [p.businessName,p.ownerName,p.businessType,p.city,p.website,p.socialLink,p.email,p.phone,p.source,p.painPointGuess,p.aiAngle,p.contactMethod,p.status,p.messageSentDate,p.followUpDate,p.notes]);
+      const csv = [headers, ...rows].map(r => r.map(escapeCsv).join(',')).join('\n');
+      const blob = new Blob([csv], {type:'text/csv'});
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'axiom-prospects.csv'; a.click();
+    }
+
+    function refresh(){ stats(); renderTable(); }
+
+    byId('prospectForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const obj = {
+        id: byId('editId').value || crypto.randomUUID(),
+        businessName: byId('businessName').value.trim(), ownerName: byId('ownerName').value.trim(), businessType: byId('businessType').value.trim(), city: byId('city').value.trim(),
+        website: byId('website').value.trim(), socialLink: byId('socialLink').value.trim(), email: byId('email').value.trim(), phone: byId('phone').value.trim(),
+        source: byId('source').value, painPointGuess: byId('painPointGuess').value.trim(), aiAngle: byId('aiAngle').value.trim(), contactMethod: byId('contactMethod').value,
+        status: byId('status').value, messageSentDate: byId('messageSentDate').value, followUpDate: byId('followUpDate').value, notes: byId('notes').value.trim()
+      };
+      const idx = prospects.findIndex(p => p.id === obj.id);
+      if (idx > -1) prospects[idx] = obj; else prospects.unshift(obj);
+      save(); resetForm(); refresh();
+    });
+
+    ['tableSearch','filterCity','filterType','filterStatus'].forEach(id => byId(id).addEventListener('input', renderTable));
+    byId('resetForm').onclick = resetForm;
+    byId('generateMessage').onclick = () => byId('messageOutput').value = getGeneratedMessage(byId('messageType').value);
+    byId('copyMessage').onclick = () => copy(byId('messageOutput').value || getGeneratedMessage(byId('messageType').value));
+    byId('exportCsv').onclick = exportCsv;
+    byId('markDueDone').onclick = () => { filteredProspects().forEach(p => p.followUpDate = ''); save(); refresh(); };
+
+    byId('generateSearch').onclick = () => {
+      const cat = byId('searchCategory').value.toLowerCase().replace(',', '');
+      const loc = byId('searchLocation').value.replace(',', '');
+      const phrases = [
+        `${cat} ${loc}`,
+        `${cat} near ${loc}`,
+        `${cat} ${loc} reviews`,
+        `${cat} ${loc} facebook`,
+        `${cat} ${loc} owner`
+      ];
+      byId('searchResults').innerHTML = phrases.map(p => `<div class='card' style='padding:10px;'><div>${p}</div><div class='btn-row' style='margin-top:6px;'><button class='btn-muted' onclick='navigator.clipboard.writeText(${JSON.stringify('${p}')}.replace("${p}", ${JSON.stringify(p)}))'>Copy</button></div></div>`).join('');
+    };
+
+    const prospectTemplate = `Axiom Prospect Notes\n\nBusiness Name:\nOwner / Contact:\nBusiness Type:\nCity:\nWebsite / Social:\nSource:\n\nObserved Pain Points:\n- \n\nPossible AI System Angle:\n- \n\nRecommended Outreach Message:\n- \n\nStatus:\nFollow-Up Date:\nNotes:`;
+    const auditTemplate = `Axiom AI Systems Report\n\nClient:\nBusiness:\nDate:\n\n1. Business Snapshot\n\n2. Current Workflow Problems\n\n3. Repetitive Tasks Identified\n\n4. AI Opportunities\n\n5. Automation Opportunities\n\n6. Recommended First System\n\n7. Suggested Tools\n\n8. Estimated Time Saved\n\n9. 30-Day Implementation Roadmap\n\n10. Recommended Next Step`;
+    byId('prospectTemplate').textContent = prospectTemplate;
+    byId('auditTemplate').textContent = auditTemplate;
+    byId('copyProspectTemplate').onclick = () => copy(prospectTemplate);
+    byId('copyAuditTemplate').onclick = () => copy(auditTemplate);
+
+    populateSelectors();
+    byId('messageOutput').value = getGeneratedMessage('general');
+    refresh();
+  </script>
+</body>
+</html>
