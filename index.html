@@ -20,106 +20,59 @@
       --nav-height: 74px;
     }
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: linear-gradient(180deg, #070b14 0%, #0a0f1a 100%);
-      color: var(--text);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height: 1.4;
-    }
-    .container {
-      width: min(1100px, 94vw);
-      margin: 16px auto;
-      padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom, 0px) + 24px);
-    }
+    body { margin: 0; background: linear-gradient(180deg, #070b14 0%, #0a0f1a 100%); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.4; }
+    .container { width: min(1100px, 94vw); margin: 16px auto; padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom, 0px) + 24px); }
     h1 { margin: 0 0 8px; font-size: clamp(1.4rem, 2.6vw, 2rem); }
     h2 { margin: 0 0 12px; font-size: 1.1rem; color: var(--gold-soft); }
     h3 { margin: 0 0 8px; font-size: 1rem; color: var(--gold-soft); }
     p, label, small { color: var(--muted); }
-    .hero {
-      background: linear-gradient(130deg, var(--card), var(--card-2));
-      border: 1px solid rgba(212,175,55,.3);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 20px;
-      margin-bottom: 16px;
-    }
+    .hero { background: linear-gradient(130deg, var(--card), var(--card-2)); border: 1px solid rgba(212,175,55,.3); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; margin-bottom: 16px; }
     .grid { display: grid; gap: 12px; }
     .grid-2 { grid-template-columns: 1fr; }
     .grid-3 { grid-template-columns: 1fr; }
-    .card {
-      background: var(--bg-soft);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: var(--radius);
-      padding: 14px;
-      box-shadow: var(--shadow);
-    }
+    .card { background: var(--bg-soft); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 14px; box-shadow: var(--shadow); }
     .stats { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
     .stat { padding: 10px; border-radius: 10px; background: #0d1523; border: 1px solid rgba(212,175,55,.2); }
     .stat strong { display: block; font-size: 1.25rem; color: var(--gold-soft); }
     .stat span { font-size: .8rem; color: var(--muted); }
-
-    input, select, textarea, button {
-      width: 100%;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,.15);
-      background: #0e1728;
-      color: var(--text);
-      padding: 12px 14px;
-      min-height: 46px;
-      font: inherit;
-    }
+    input, select, textarea, button { width: 100%; border-radius: 10px; border: 1px solid rgba(255,255,255,.15); background: #0e1728; color: var(--text); padding: 12px 14px; min-height: 46px; font: inherit; }
     textarea { min-height: 88px; resize: vertical; }
-    button {
-      cursor: pointer;
-      border-color: rgba(212,175,55,.45);
-      background: linear-gradient(180deg, #d4af37, #b8932b);
-      color: #101010;
-      font-weight: 700;
-    }
+    button { cursor: pointer; border-color: rgba(212,175,55,.45); background: linear-gradient(180deg, #d4af37, #b8932b); color: #101010; font-weight: 700; }
     .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
-    .btn-row button { width: auto; min-height: 40px; }
+    .btn-row button, .btn-row label { width: auto; min-height: 40px; }
     .btn-muted { background: #12203a; border-color: rgba(255,255,255,.2); color: var(--text); font-weight: 600; }
     .btn-danger { background: linear-gradient(180deg, #de6262, #b24040); color: #fff; border-color: rgba(255,255,255,.2); }
-
+    .file-btn { display: inline-flex; align-items: center; cursor: pointer; border-radius: 10px; border: 1px solid rgba(255,255,255,.2); background: #12203a; color: var(--text); padding: 10px 14px; font-weight: 700; }
     .checkbox-list { display: grid; grid-template-columns: 1fr; gap: 6px; margin-top: 8px; }
-    .checkbox-item {
-      display: flex; align-items: center; gap: 8px;
-      background: #0d1523; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,.08);
-    }
+    .checkbox-item { display: flex; align-items: center; gap: 8px; background: #0d1523; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,.08); }
     .checkbox-item input { width: auto; min-height: auto; }
-
+    .note-presets { display: grid; grid-template-columns: 1fr; gap: 8px; grid-column: 1/-1; }
+    .note-presets button { text-align: left; white-space: normal; line-height: 1.3; }
+    .due-list { display: grid; gap: 10px; }
+    .due-item { background:#0d1523; border:1px solid rgba(212,175,55,.22); border-radius:10px; padding:10px; }
+    .due-item strong { color: var(--gold-soft); }
+    .due-meta { display:grid; gap:3px; margin:6px 0; color:var(--muted); font-size:.9rem; }
+    .empty-state { color: var(--muted); background:#0d1523; border:1px solid rgba(255,255,255,.08); border-radius:10px; padding:12px; }
     .table-wrap { overflow: auto; border-radius: 10px; border: 1px solid rgba(255,255,255,.12); display: none; }
-    table { width: 100%; border-collapse: collapse; min-width: 980px; }
-    th, td { text-align: left; padding: 9px; border-bottom: 1px solid rgba(255,255,255,.09); font-size: .9rem; }
+    table { width: 100%; border-collapse: collapse; min-width: 1080px; }
+    th, td { text-align: left; padding: 9px; border-bottom: 1px solid rgba(255,255,255,.09); font-size: .9rem; vertical-align: top; }
     th { color: var(--gold-soft); background: #0d1523; position: sticky; top: 0; }
     .mobile-list { display: grid; gap: 10px; margin-top: 10px; }
     .prospect-item { background:#0d1523; border:1px solid rgba(255,255,255,.1); border-radius:10px; padding:10px; }
     .prospect-item strong { color: var(--gold-soft); }
-
     .chip { display:inline-block; border-radius:999px; padding:3px 8px; border:1px solid rgba(212,175,55,.35); font-size:.75rem; color:var(--gold-soft); margin:2px 0; }
     .template { background:#0c1321; border-radius:10px; border:1px solid rgba(255,255,255,.12); padding:12px; white-space:pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:.85rem; color:#e9e4d8; }
-
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
-
-    .bottom-nav {
-      position: fixed;
-      left: 0; right: 0; bottom: 0;
-      background: rgba(10,15,26,.96);
-      border-top: 1px solid rgba(212,175,55,.3);
-      backdrop-filter: blur(8px);
-      padding: 8px 8px calc(8px + env(safe-area-inset-bottom, 0px));
-      z-index: 1000;
-    }
+    .bottom-nav { position: fixed; left: 0; right: 0; bottom: 0; background: rgba(10,15,26,.96); border-top: 1px solid rgba(212,175,55,.3); backdrop-filter: blur(8px); padding: 8px 8px calc(8px + env(safe-area-inset-bottom, 0px)); z-index: 1000; }
     .nav-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
     .tab-btn { min-height: 50px; background: #0d1523; color: var(--muted); border:1px solid rgba(255,255,255,.12); font-size:.8rem; padding:6px; }
     .tab-btn.active { color: var(--gold-soft); border-color: rgba(212,175,55,.5); }
-
     @media (min-width: 740px) {
       .grid-2 { grid-template-columns: 1fr 1fr; }
       .grid-3 { grid-template-columns: repeat(3, 1fr); }
       .stats { grid-template-columns: repeat(7, 1fr); }
+      .note-presets { grid-template-columns: repeat(2, 1fr); }
       .table-wrap { display: block; }
       .mobile-list { display: none; }
       .tab-btn { font-size: .9rem; }
@@ -131,6 +84,8 @@
     <section id="tab-dashboard" class="tab-panel active">
       <section class="hero"><h1>Axiom Prospect Builder</h1><p>Mobile-first prospecting and outreach tracker for Axiom AI Systems.</p></section>
       <section class="card"><h2>Dashboard</h2><div class="stats" id="stats"></div></section>
+      <section class="card" style="margin-top:12px;"><h2>Today's Target</h2><div id="todayTarget" class="checkbox-list"></div><div class="btn-row" style="margin-top:8px;"><button id="resetTodayTarget" class="btn-muted">Reset Target</button></div></section>
+      <section class="card" style="margin-top:12px;"><h2>Follow-Ups Due Today</h2><div id="dashboardDueFollowups" class="due-list"></div></section>
     </section>
 
     <section id="tab-add" class="tab-panel">
@@ -151,8 +106,20 @@
           <input id="painPointGuess" placeholder="Pain Point Guess" />
           <input id="aiAngle" placeholder="AI System Angle" />
           <select id="status"><option>Not Contacted</option><option>Message Sent</option><option>Replied</option><option>Form Sent</option><option>Form Completed</option><option>Audit Offered</option><option>Audit Sold</option><option>Not Interested</option></select>
-          <input id="messageSentDate" type="date" />
-          <input id="followUpDate" type="date" />
+          <label>Message Sent Date<input id="messageSentDate" type="date" /></label>
+          <label>Follow-Up Date<input id="followUpDate" type="date" /></label>
+          <label>Initial Message Date<input id="initialMessageDate" type="date" /></label>
+          <label>Follow-Up 1 Date<input id="followUp1Date" type="date" /></label>
+          <label>Follow-Up 2 Date<input id="followUp2Date" type="date" /></label>
+          <label>Response Date<input id="responseDate" type="date" /></label>
+          <div class="note-presets">
+            <button type="button" class="btn-muted note-preset" data-note="Facebook/phone only; likely manual scheduling and follow-up.">Facebook/phone only</button>
+            <button type="button" class="btn-muted note-preset" data-note="Website has quote form; likely quote tracking and follow-up opportunity.">Website has quote form</button>
+            <button type="button" class="btn-muted note-preset" data-note="DM to book; likely manual customer questions and scheduling.">DM to book</button>
+            <button type="button" class="btn-muted note-preset" data-note="Multiple services listed; likely repeated pricing/service questions.">Multiple services listed</button>
+            <button type="button" class="btn-muted note-preset" data-note="Owner-operated service business; likely admin handled directly by owner.">Owner-operated service business</button>
+            <button type="button" class="btn-muted note-preset" data-note="No obvious intake system; likely manual lead capture and follow-up.">No obvious intake system</button>
+          </div>
           <textarea id="notes" placeholder="Notes" style="grid-column:1/-1"></textarea>
           <div class="btn-row" style="grid-column:1/-1"><button type="submit">Save Prospect</button><button type="button" class="btn-muted" id="resetForm">Clear</button></div>
         </form>
@@ -172,11 +139,11 @@
     </section>
 
     <section id="tab-prospects" class="tab-panel">
-      <section class="card"><h2>Prospect Tracker</h2><div class="grid grid-3"><input id="tableSearch" placeholder="Search prospects" /><select id="filterCity"><option value="">All Cities</option></select><select id="filterType"><option value="">All Business Types</option></select></div><div style="margin-top:8px" class="grid grid-3"><select id="filterStatus"><option value="">All Statuses</option></select><button id="exportCsv" class="btn-muted">Export All to CSV</button><button id="markDueDone" class="btn-muted">Mark Follow-Ups Complete (filtered)</button></div>
+      <section class="card"><h2>Prospect Tracker</h2><div class="grid grid-3"><input id="tableSearch" placeholder="Search prospects" /><select id="filterCity"><option value="">All Cities</option></select><select id="filterType"><option value="">All Business Types</option></select></div><div style="margin-top:8px" class="grid grid-3"><select id="filterStatus"><option value="">All Statuses</option></select><button id="exportCsv" class="btn-muted">Export All to CSV</button><button id="markDueDone" class="btn-muted">Mark Follow-Ups Complete (filtered)</button></div><div class="btn-row" style="margin-top:8px;"><button id="exportJson" class="btn-muted">Export Backup as JSON</button><label class="file-btn">Import Backup from JSON<input id="importJson" type="file" accept="application/json,.json" style="display:none" /></label></div>
+      <section class="card" style="margin-top:12px;background:#0d1523;"><h2>Follow-Ups Due Today</h2><div id="prospectsDueFollowups" class="due-list"></div></section>
       <div id="mobileProspects" class="mobile-list"></div>
-      <div class="table-wrap" style="margin-top:10px;"><table><thead><tr><th>Business</th><th>Owner</th><th>Type</th><th>City</th><th>Status</th><th>Contact</th><th>Follow-Up</th><th>Pain Point</th><th>AI Angle</th><th>Actions</th></tr></thead><tbody id="prospectRows"></tbody></table></div></section>
+      <div class="table-wrap" style="margin-top:10px;"><table><thead><tr><th>Business</th><th>Owner</th><th>Type</th><th>City</th><th>Status</th><th>Contact</th><th>Follow-Up</th><th>Outreach History</th><th>Pain Point</th><th>AI Angle</th><th>Actions</th></tr></thead><tbody id="prospectRows"></tbody></table></div></section>
     </section>
-
     <datalist id="typeList"></datalist><datalist id="cityList"></datalist>
   </div>
 
@@ -184,26 +151,31 @@
 
 <script>
 const STORAGE_KEY='axiom_prospects_v1';
+const CHECKLIST_KEY='axiom_daily_checklist_v1';
+const TARGET_KEY='axiom_today_target_v1';
 const categories=['Sports coaches and instructors','Batting/pitching instructors','Personal trainers and fitness coaches','Tutors and education services','Cleaning companies','Lawn care and landscaping','Mobile detailers','Pressure washing companies','Photographers','Realtors','Handyman services and small contractors','Veteran-owned businesses','Local service providers'];
 const locations=['Sumter, SC','Dalzell, SC','Shaw AFB area','Manning, SC','Bishopville, SC','Camden, SC','Columbia, SC','Lexington, SC','Irmo, SC','Florence, SC','Orangeburg, SC','Hartsville, SC'];
 const painPoints=['Scheduling looks manual','No intake form','Posts say DM to book','Likely repeats customer questions','Needs lead follow-up','Needs review request workflow','Needs quote/estimate workflow','Needs client tracking','Needs content planning','Uses scattered tools','No visible system'];
 const finderCategories=['Sports coach','Batting lessons','Pitching instructor','Personal trainer','Fitness coach','Tutor','Cleaning service','Lawn care','Landscaping','Mobile detailing','Pressure washing','Photographer','Realtor','Handyman','Contractor','Veteran-owned business','Local service business'];
 const checklistItems=['Find 10 businesses','Score each with ICP Fit Filter','Save 5 good-fit prospects','Send 5 outreach messages','Schedule follow-ups'];
+const targetItems=['Review 10 businesses','Save 3-5 qualified prospects','Send 5 targeted messages','Update follow-up dates'];
 const aiAngles=['Lead follow-up system','Client intake system','FAQ response assistant','Booking/reminder workflow','Quote/estimate workflow','Customer review system','Content planning system','Client tracking system','SOP/checklist builder','AI message response assistant'];
 const icpCriteria=['Owner-operated','Gets leads through DM, phone, text, email, or referrals','Has scheduling or appointment-based work','Likely answers repeated customer questions','Likely needs follow-up','Has no obvious intake system','Posts manually or inconsistently','Offers a service, lesson, estimate, or consultation','Could benefit from reminders, templates, or client tracking'];
-let prospects=JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]');
-const byId=id=>document.getElementById(id); const escapeCsv=val=>`"${String(val??'').replaceAll('"','""')}"`; const save=()=>localStorage.setItem(STORAGE_KEY,JSON.stringify(prospects));
-function switchTab(tab){document.querySelectorAll('.tab-panel').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));byId(`tab-${tab}`).classList.add('active');document.querySelector(`.tab-btn[data-tab="${tab}"]`).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});} 
+const byId=id=>document.getElementById(id);
+const escapeCsv=val=>`"${String(val??'').replaceAll('"','""')}"`;
+const escapeHtml=val=>String(val??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+const todayStr=()=>new Date().toISOString().slice(0,10);
+function loadProspects(){try{const raw=JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]');return Array.isArray(raw)?raw.map(normalizeProspect):[];}catch{return [];}}
+function normalizeProspect(p){return {id:p.id||crypto.randomUUID(),businessName:p.businessName||'',ownerName:p.ownerName||'',businessType:p.businessType||'',city:p.city||'',website:p.website||'',socialLink:p.socialLink||'',email:p.email||'',phone:p.phone||'',source:p.source||'Google Maps',painPointGuess:p.painPointGuess||'',aiAngle:p.aiAngle||'',contactMethod:p.contactMethod||'Other',status:p.status||'Not Contacted',messageSentDate:p.messageSentDate||'',followUpDate:p.followUpDate||'',initialMessageDate:p.initialMessageDate||'',followUp1Date:p.followUp1Date||'',followUp2Date:p.followUp2Date||'',responseDate:p.responseDate||'',notes:p.notes||''};}
+let prospects=loadProspects();
+const save=()=>localStorage.setItem(STORAGE_KEY,JSON.stringify(prospects));
+function switchTab(tab){document.querySelectorAll('.tab-panel').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));byId(`tab-${tab}`).classList.add('active');document.querySelector(`.tab-btn[data-tab="${tab}"]`).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
 document.querySelectorAll('.tab-btn').forEach(btn=>btn.onclick=()=>switchTab(btn.dataset.tab));
-function populateSelectors(){finderCategories.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;byId('finderCategory').appendChild(o);});locations.forEach(l=>{const o=document.createElement('option');o.value=l;o.textContent=l;byId('finderLocation').appendChild(o);});checklistItems.forEach((item,i)=>byId('dailyChecklist').insertAdjacentHTML('beforeend',`<label class="checkbox-item"><input type="checkbox" id="dc${i}"> ${item}</label>`));[byId('searchCategory'),byId('typeList')].forEach(el=>categories.forEach(c=>{const o=document.createElement('option');o.value=c;if(el.tagName==='SELECT')o.textContent=c;el.appendChild(o);}));[byId('searchLocation'),byId('cityList')].forEach(el=>locations.forEach(c=>{const o=document.createElement('option');o.value=c;if(el.tagName==='SELECT')o.textContent=c;el.appendChild(o);}));['Not Contacted','Message Sent','Replied','Form Sent','Form Completed','Audit Offered','Audit Sold','Not Interested'].forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;byId('filterStatus').appendChild(o);});painPoints.forEach((p,i)=>byId('painPointList').insertAdjacentHTML('beforeend',`<label class="checkbox-item"><input type="checkbox" value="${p}" id="pp${i}"> ${p}</label>`));aiAngles.forEach((a,i)=>byId('angleList').insertAdjacentHTML('beforeend',`<label class="checkbox-item"><input type="checkbox" value="${a}" id="aa${i}"> ${a}</label>`));icpCriteria.forEach((c,i)=>byId('icpList').insertAdjacentHTML('beforeend',`<label class="checkbox-item"><input type="checkbox" value="${c}" id="icp${i}"> ${c}</label>`));}
-
+function populateSelectors(){finderCategories.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;byId('finderCategory').appendChild(o);});locations.forEach(l=>{const o=document.createElement('option');o.value=l;o.textContent=l;byId('finderLocation').appendChild(o);});checklistItems.forEach((item,i)=>byId('dailyChecklist').insertAdjacentHTML('beforeend',`<label class="checkbox-item"><input type="checkbox" id="dc${i}"> ${escapeHtml(item)}</label>`));targetItems.forEach((item,i)=>byId('todayTarget').insertAdjacentHTML('beforeend',`<label class="checkbox-item"><input type="checkbox" id="target${i}"> ${escapeHtml(item)}</label>`));[byId('searchCategory'),byId('typeList')].forEach(el=>categories.forEach(c=>{const o=document.createElement('option');o.value=c;if(el.tagName==='SELECT')o.textContent=c;el.appendChild(o);}));[byId('searchLocation'),byId('cityList')].forEach(el=>locations.forEach(c=>{const o=document.createElement('option');o.value=c;if(el.tagName==='SELECT')o.textContent=c;el.appendChild(o);}));['Not Contacted','Message Sent','Replied','Form Sent','Form Completed','Audit Offered','Audit Sold','Not Interested'].forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;byId('filterStatus').appendChild(o);});painPoints.forEach((p,i)=>byId('painPointList').insertAdjacentHTML('beforeend',`<label class="checkbox-item"><input type="checkbox" value="${escapeHtml(p)}" id="pp${i}"> ${escapeHtml(p)}</label>`));aiAngles.forEach((a,i)=>byId('angleList').insertAdjacentHTML('beforeend',`<label class="checkbox-item"><input type="checkbox" value="${escapeHtml(a)}" id="aa${i}"> ${escapeHtml(a)}</label>`));icpCriteria.forEach((c,i)=>byId('icpList').insertAdjacentHTML('beforeend',`<label class="checkbox-item"><input type="checkbox" value="${escapeHtml(c)}" id="icp${i}"> ${escapeHtml(c)}</label>`));}
 function getIcpSelection(){return [...document.querySelectorAll('#icpList input:checked')].map(x=>x.value);}
 function updateIcpFit(){const selected=getIcpSelection();const good=selected.length>=3;byId('icpCount').textContent=`${selected.length} criteria selected`;byId('icpRecommendation').textContent=good?'Good Fit: This business is worth adding to the prospect list.':'Low Priority: Skip for now unless there is another strong reason to contact them.';}
 function resetIcpFilter(){document.querySelectorAll('#icpList input').forEach(x=>x.checked=false);updateIcpFit();}
 function copyIcpSummary(){const selected=getIcpSelection();const good=selected.length>=3?'Good Fit':'Low Priority';const lines=selected.length?selected.map(x=>`- ${x}`).join('\n'):'- None selected';copy(`Axiom ICP Fit:\n${selected.length} criteria matched.\nRecommendation: ${good}\nSelected criteria:\n${lines}`);}
-
-
-const CHECKLIST_KEY='axiom_daily_checklist_v1';
 function finderIcpTier(count){if(count>=7)return 'High-Priority Prospect';if(count>=5)return 'Strong Prospect';if(count>=3)return 'Decent Prospect';return 'Low Priority';}
 function selectedPainPoints(){return [...document.querySelectorAll('#painPointList input:checked')].map(x=>x.value);}
 function suggestAngle(){const cat=(byId('finderCategory').value||'').toLowerCase();const pain=selectedPainPoints().join(' ').toLowerCase();let angle='Lead follow-up system';if(/book|schedule|appointment/.test(cat+pain))angle='Booking/reminder workflow';else if(/quote|estimate|contractor|handyman|pressure/.test(cat+pain))angle='Quote/estimate workflow';else if(/tutor|coach|trainer|lesson/.test(cat+pain))angle='Client tracking system';else if(/review/.test(pain))angle='Customer review system';else if(/faq|question/.test(pain))angle='FAQ response assistant';else if(/intake/.test(pain))angle='Client intake system';byId('angleSuggestion').textContent=`Suggested AI System Angle: ${angle}`;return angle;}
@@ -213,37 +185,45 @@ function updateFinderIcp(){const count=getIcpSelection().length;const tier=finde
 function recommendedFinderMessage(p){const type=(p.businessType||byId('finderCategory').value||'business').toLowerCase();const template=(type.includes('coach')||type.includes('trainer')||type.includes('tutor'))?'coach':'service';byId('messageBusinessType').value=p.businessType||byId('finderCategory').value||'';byId('messageOutput').value=getGeneratedMessage(template);return byId('messageOutput').value;}
 function saveChecklist(){const vals=[...document.querySelectorAll('#dailyChecklist input')].map(x=>x.checked);localStorage.setItem(CHECKLIST_KEY,JSON.stringify(vals));}
 function loadChecklist(){const vals=JSON.parse(localStorage.getItem(CHECKLIST_KEY)||'[]');document.querySelectorAll('#dailyChecklist input').forEach((x,i)=>x.checked=!!vals[i]);}
-
-function stats(){const today=new Date().toISOString().slice(0,10);const data={'Total prospects':prospects.length,'Messages sent':prospects.filter(p=>p.status==='Message Sent').length,'Replies received':prospects.filter(p=>p.status==='Replied').length,'Forms sent':prospects.filter(p=>p.status==='Form Sent').length,'Forms completed':prospects.filter(p=>p.status==='Form Completed').length,'Paid audits':prospects.filter(p=>p.status==='Audit Sold').length,'Follow-ups due':prospects.filter(p=>p.followUpDate&&p.followUpDate<=today).length};byId('stats').innerHTML=Object.entries(data).map(([k,v])=>`<div class="stat"><strong>${v}</strong><span>${k}</span></div>`).join('');}
+function saveTarget(){const vals=[...document.querySelectorAll('#todayTarget input')].map(x=>x.checked);localStorage.setItem(TARGET_KEY,JSON.stringify({date:todayStr(),vals}));}
+function loadTarget(){let data={date:todayStr(),vals:[]};try{data=JSON.parse(localStorage.getItem(TARGET_KEY)||'{}')||data;}catch{}document.querySelectorAll('#todayTarget input').forEach((x,i)=>x.checked=data.date===todayStr()&&!!data.vals?.[i]);}
+function dueFollowUps(){const today=todayStr();return prospects.filter(p=>p.followUpDate&&p.followUpDate<=today).sort((a,b)=>(a.followUpDate||'').localeCompare(b.followUpDate||''));}
+function followUpMessage(p){return `Hi ${p.businessName||'there'} team,\n\nJust wanted to follow up.\n\nI'm still testing a few founder-rate AI Systems Audits for local service businesses. The goal is to identify repetitive work like quote requests, customer questions, scheduling, follow-up, reminders, or review requests that could be simplified.\n\nWould it be okay if I sent over the short intake form?\n\nBest,\nMichael`;}
+function renderDueFollowUps(){const data=dueFollowUps();const html=data.length?data.map(p=>`<div class="due-item"><strong>${escapeHtml(p.businessName)}</strong><div class="due-meta"><span>Contact: ${escapeHtml(p.contactMethod||'Other')}</span><span>Status: <span class="chip">${escapeHtml(p.status||'Not Contacted')}</span></span><span>Follow-up date: ${escapeHtml(p.followUpDate)}</span></div><div class="btn-row"><button class="btn-muted" onclick='copyFollowUpMessage(${JSON.stringify(p.id)})'>Copy Follow-Up</button><button class="btn-muted" onclick='editProspect(${JSON.stringify(p.id)})'>Edit</button><button class="btn-muted" onclick='completeFollowUp(${JSON.stringify(p.id)})'>FU Done</button></div></div>`).join(''):'<div class="empty-state">No follow-ups due today. Clean board, clean coffee.</div>';byId('dashboardDueFollowups').innerHTML=html;byId('prospectsDueFollowups').innerHTML=html;}
+function stats(){const today=todayStr();const data={'Total prospects':prospects.length,'Messages sent':prospects.filter(p=>p.status==='Message Sent').length,'Replies received':prospects.filter(p=>p.status==='Replied').length,'Forms sent':prospects.filter(p=>p.status==='Form Sent').length,'Forms completed':prospects.filter(p=>p.status==='Form Completed').length,'Paid audits':prospects.filter(p=>p.status==='Audit Sold').length,'Follow-ups due':prospects.filter(p=>p.followUpDate&&p.followUpDate<=today).length};byId('stats').innerHTML=Object.entries(data).map(([k,v])=>`<div class="stat"><strong>${v}</strong><span>${k}</span></div>`).join('');}
 function currentFilters(){return{q:byId('tableSearch').value.trim().toLowerCase(),city:byId('filterCity').value,type:byId('filterType').value,status:byId('filterStatus').value};}
 function filteredProspects(){const{q,city,type,status}=currentFilters();return prospects.filter(p=>{const blob=Object.values(p).join(' ').toLowerCase();return(!q||blob.includes(q))&&(!city||p.city===city)&&(!type||p.businessType===type)&&(!status||p.status===status);});}
-function renderTable(){const data=filteredProspects();byId('prospectRows').innerHTML=data.map(p=>`<tr><td>${p.businessName}</td><td>${p.ownerName||''}</td><td>${p.businessType}</td><td>${p.city}</td><td><span class='chip'>${p.status}</span></td><td>${p.contactMethod||''}</td><td>${p.followUpDate||''}</td><td>${p.painPointGuess||''}</td><td>${p.aiAngle||''}</td><td><div class='btn-row'><button class='btn-muted' onclick="editProspect('${p.id}')">Edit</button><button class='btn-muted' onclick="copyRowMessage('${p.id}')">Copy Msg</button><button class='btn-muted' onclick="completeFollowUp('${p.id}')">FU Done</button><button class='btn-danger' onclick="deleteProspect('${p.id}')">Delete</button></div></td></tr>`).join('');
-byId('mobileProspects').innerHTML=data.map(p=>`<div class='prospect-item'><strong>${p.businessName}</strong><div>${p.ownerName||''} • ${p.businessType} • ${p.city}</div><div><span class='chip'>${p.status}</span></div><small>Follow-up: ${p.followUpDate||'—'} | Contact: ${p.contactMethod||'—'}</small><div class='btn-row' style='margin-top:8px;'><button class='btn-muted' onclick="editProspect('${p.id}')">Edit</button><button class='btn-muted' onclick="copyRowMessage('${p.id}')">Copy Msg</button><button class='btn-muted' onclick="completeFollowUp('${p.id}')">FU Done</button><button class='btn-danger' onclick="deleteProspect('${p.id}')">Delete</button></div></div>`).join('');
-const uniqueCities=[...new Set(prospects.map(p=>p.city).filter(Boolean))];const uniqueTypes=[...new Set(prospects.map(p=>p.businessType).filter(Boolean))];byId('filterCity').innerHTML='<option value="">All Cities</option>'+uniqueCities.map(v=>`<option ${v===byId('filterCity').value?'selected':''}>${v}</option>`).join('');byId('filterType').innerHTML='<option value="">All Business Types</option>'+uniqueTypes.map(v=>`<option ${v===byId('filterType').value?'selected':''}>${v}</option>`).join('');}
+function outreachHistory(p){return [`Initial: ${p.initialMessageDate||p.messageSentDate||'-'}`,`FU1: ${p.followUp1Date||'-'}`,`FU2: ${p.followUp2Date||'-'}`,`Response: ${p.responseDate||'-'}`].join('<br>');}
+function renderTable(){const data=filteredProspects();byId('prospectRows').innerHTML=data.map(p=>`<tr><td>${escapeHtml(p.businessName)}</td><td>${escapeHtml(p.ownerName)}</td><td>${escapeHtml(p.businessType)}</td><td>${escapeHtml(p.city)}</td><td><span class='chip'>${escapeHtml(p.status)}</span></td><td>${escapeHtml(p.contactMethod)}</td><td>${escapeHtml(p.followUpDate)}</td><td>${outreachHistory(p)}</td><td>${escapeHtml(p.painPointGuess)}</td><td>${escapeHtml(p.aiAngle)}</td><td><div class='btn-row'><button class='btn-muted' onclick='editProspect(${JSON.stringify(p.id)})'>Edit</button><button class='btn-muted' onclick='copyRowMessage(${JSON.stringify(p.id)})'>Copy Msg</button><button class='btn-muted' onclick='copyFollowUpMessage(${JSON.stringify(p.id)})'>Copy FU</button><button class='btn-muted' onclick='completeFollowUp(${JSON.stringify(p.id)})'>FU Done</button><button class='btn-danger' onclick='deleteProspect(${JSON.stringify(p.id)})'>Delete</button></div></td></tr>`).join('');
+byId('mobileProspects').innerHTML=data.map(p=>`<div class='prospect-item'><strong>${escapeHtml(p.businessName)}</strong><div>${escapeHtml(p.ownerName)} | ${escapeHtml(p.businessType)} | ${escapeHtml(p.city)}</div><div><span class='chip'>${escapeHtml(p.status)}</span></div><small>Follow-up: ${escapeHtml(p.followUpDate||'-')} | Contact: ${escapeHtml(p.contactMethod||'-')}</small><small style='display:block;'>Initial: ${escapeHtml(p.initialMessageDate||p.messageSentDate||'-')} | FU1: ${escapeHtml(p.followUp1Date||'-')} | FU2: ${escapeHtml(p.followUp2Date||'-')} | Response: ${escapeHtml(p.responseDate||'-')}</small><div class='btn-row' style='margin-top:8px;'><button class='btn-muted' onclick='editProspect(${JSON.stringify(p.id)})'>Edit</button><button class='btn-muted' onclick='copyRowMessage(${JSON.stringify(p.id)})'>Copy Msg</button><button class='btn-muted' onclick='copyFollowUpMessage(${JSON.stringify(p.id)})'>Copy FU</button><button class='btn-muted' onclick='completeFollowUp(${JSON.stringify(p.id)})'>FU Done</button><button class='btn-danger' onclick='deleteProspect(${JSON.stringify(p.id)})'>Delete</button></div></div>`).join('');
+const currentCity=byId('filterCity').value;const currentType=byId('filterType').value;const uniqueCities=[...new Set(prospects.map(p=>p.city).filter(Boolean))];const uniqueTypes=[...new Set(prospects.map(p=>p.businessType).filter(Boolean))];byId('filterCity').innerHTML='<option value="">All Cities</option>'+uniqueCities.map(v=>`<option ${v===currentCity?'selected':''}>${escapeHtml(v)}</option>`).join('');byId('filterType').innerHTML='<option value="">All Business Types</option>'+uniqueTypes.map(v=>`<option ${v===currentType?'selected':''}>${escapeHtml(v)}</option>`).join('');}
 function resetForm(){byId('prospectForm').reset();byId('editId').value='';}
-function getGeneratedMessage(type){const pain=[...document.querySelectorAll('#painPointList input:checked')].map(x=>x.value).join(', ');const bt=byId('messageBusinessType').value.trim();const suffix=(pain||bt)?`\n\nContext noted: ${[bt,pain].filter(Boolean).join(' | ')}.`:'';const templates={general:`Hey, I’m Michael with Axiom AI Systems here in South Carolina.\n\nI help small business owners simplify repetitive tasks like customer questions, follow-ups, scheduling, intake forms, and admin work using practical AI workflows and automation.\n\nI noticed your business looks like it may handle a lot through messages and manual follow-up.\n\nWould it be okay if I sent over a short intake form for a founder-rate AI Systems Audit? It helps identify where your workflow could save time.${suffix}`,coach:`Hey, I’m Michael with Axiom AI Systems.\n\nI’m working with small business owners, coaches, and instructors to find repetitive tasks that can be simplified with AI, automation, or better workflows.\n\nFor coaches and instructors, that usually means things like scheduling, parent/client messages, session planning, follow-ups, reminders, and tracking client progress.\n\nI’m opening a few founder-rate AI Systems Audits and thought your business may be a good fit.\n\nWould it be okay if I sent over the short intake form?${suffix}`,service:`Hey, I’m Michael with Axiom AI Systems.\n\nI help local service businesses simplify repetitive admin work like quote requests, customer follow-ups, scheduling, review requests, reminders, and common customer questions.\n\nI’m opening a few founder-rate AI Systems Audits for small businesses in the area.\n\nWould it be okay if I sent over the short intake form to see where your workflow could save time?${suffix}`,followup:`Hey, just wanted to follow up on this.\n\nI’m still opening a few founder-rate AI Systems Audits for local small businesses. The intake form only takes a few minutes and helps identify where repetitive work, follow-up, scheduling, or admin tasks could be simplified.\n\nWould you like me to send it over?${suffix}`};return templates[type]||templates.general;}
-function copy(text){navigator.clipboard.writeText(text);} 
-window.editProspect=id=>{const p=prospects.find(x=>x.id===id);if(!p)return;Object.entries(p).forEach(([k,v])=>byId(k)&&(byId(k).value=v||''));byId('editId').value=p.id;switchTab('add');};
+function getGeneratedMessage(type){const pain=[...document.querySelectorAll('#painPointList input:checked')].map(x=>x.value).join(', ');const bt=byId('messageBusinessType').value.trim();const suffix=(pain||bt)?`\n\nContext noted: ${[bt,pain].filter(Boolean).join(' | ')}.`:'';const templates={general:`Hey, I'm Michael with Axiom AI Systems here in South Carolina.\n\nI help small business owners simplify repetitive tasks like customer questions, follow-ups, scheduling, intake forms, and admin work using practical AI workflows and automation.\n\nI noticed your business looks like it may handle a lot through messages and manual follow-up.\n\nWould it be okay if I sent over a short intake form for a founder-rate AI Systems Audit? It helps identify where your workflow could save time.${suffix}`,coach:`Hey, I'm Michael with Axiom AI Systems.\n\nI'm working with small business owners, coaches, and instructors to find repetitive tasks that can be simplified with AI, automation, or better workflows.\n\nFor coaches and instructors, that usually means things like scheduling, parent/client messages, session planning, follow-ups, reminders, and tracking client progress.\n\nI'm opening a few founder-rate AI Systems Audits and thought your business may be a good fit.\n\nWould it be okay if I sent over the short intake form?${suffix}`,service:`Hey, I'm Michael with Axiom AI Systems.\n\nI help local service businesses simplify repetitive admin work like quote requests, customer follow-ups, scheduling, review requests, reminders, and common customer questions.\n\nI'm opening a few founder-rate AI Systems Audits for small businesses in the area.\n\nWould it be okay if I sent over the short intake form to see where your workflow could save time?${suffix}`,followup:`Hey, just wanted to follow up on this.\n\nI'm still opening a few founder-rate AI Systems Audits for local small businesses. The intake form only takes a few minutes and helps identify where repetitive work, follow-up, scheduling, or admin tasks could be simplified.\n\nWould you like me to send it over?${suffix}`};return templates[type]||templates.general;}
+function copy(text){navigator.clipboard.writeText(text);}
+window.editProspect=id=>{const p=prospects.find(x=>x.id===id);if(!p)return;Object.entries(normalizeProspect(p)).forEach(([k,v])=>byId(k)&&(byId(k).value=v||''));byId('editId').value=p.id;switchTab('add');};
 window.deleteProspect=id=>{prospects=prospects.filter(p=>p.id!==id);save();refresh();};
 window.completeFollowUp=id=>{const p=prospects.find(x=>x.id===id);if(!p)return;p.followUpDate='';p.notes=(p.notes?p.notes+'\n':'')+'Follow-up completed.';save();refresh();};
-window.copyRowMessage=id=>{const p=prospects.find(x=>x.id===id);if(!p)return;copy(getGeneratedMessage(p.businessType.toLowerCase().includes('coach')||p.businessType.toLowerCase().includes('trainer')?'coach':'service'));};
-function exportCsv(){const headers=['Business Name','Owner Name','Business Type','City','Website','Social Link','Email','Phone','Source','Pain Point Guess','AI System Angle','Contact Method','Status','Message Sent Date','Follow-Up Date','Notes'];const rows=prospects.map(p=>[p.businessName,p.ownerName,p.businessType,p.city,p.website,p.socialLink,p.email,p.phone,p.source,p.painPointGuess,p.aiAngle,p.contactMethod,p.status,p.messageSentDate,p.followUpDate,p.notes]);const csv=[headers,...rows].map(r=>r.map(escapeCsv).join(',')).join('\n');const blob=new Blob([csv],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='axiom-prospects.csv';a.click();}
-function refresh(){stats();renderTable();}
-byId('prospectForm').addEventListener('submit',e=>{e.preventDefault();const obj={id:byId('editId').value||crypto.randomUUID(),businessName:byId('businessName').value.trim(),ownerName:byId('ownerName').value.trim(),businessType:byId('businessType').value.trim(),city:byId('city').value.trim(),website:byId('website').value.trim(),socialLink:byId('socialLink').value.trim(),email:byId('email').value.trim(),phone:byId('phone').value.trim(),source:byId('source').value,painPointGuess:byId('painPointGuess').value.trim(),aiAngle:byId('aiAngle').value.trim(),contactMethod:byId('contactMethod').value,status:byId('status').value,messageSentDate:byId('messageSentDate').value,followUpDate:byId('followUpDate').value,notes:byId('notes').value.trim()};const idx=prospects.findIndex(p=>p.id===obj.id);if(idx>-1)prospects[idx]=obj;else prospects.unshift(obj);save();resetForm();refresh();switchTab('prospects');});
+window.copyRowMessage=id=>{const p=prospects.find(x=>x.id===id);if(!p)return;copy(getGeneratedMessage((p.businessType||'').toLowerCase().includes('coach')||(p.businessType||'').toLowerCase().includes('trainer')?'coach':'service'));};
+window.copyFollowUpMessage=id=>{const p=prospects.find(x=>x.id===id);if(!p)return;copy(followUpMessage(p));};
+function exportCsv(){const headers=['Business Name','Owner Name','Business Type','City','Website','Social Link','Email','Phone','Source','Pain Point Guess','AI System Angle','Contact Method','Status','Message Sent Date','Follow-Up Date','Initial Message Date','Follow-Up 1 Date','Follow-Up 2 Date','Response Date','Notes'];const rows=prospects.map(p=>[p.businessName,p.ownerName,p.businessType,p.city,p.website,p.socialLink,p.email,p.phone,p.source,p.painPointGuess,p.aiAngle,p.contactMethod,p.status,p.messageSentDate,p.followUpDate,p.initialMessageDate,p.followUp1Date,p.followUp2Date,p.responseDate,p.notes]);const csv=[headers,...rows].map(r=>r.map(escapeCsv).join(',')).join('\n');downloadBlob(csv,'text/csv','axiom-prospects.csv');}
+function exportJson(){const backup={app:'Axiom Prospect Builder',version:2,exportedAt:new Date().toISOString(),storageKey:STORAGE_KEY,prospects:prospects.map(normalizeProspect)};downloadBlob(JSON.stringify(backup,null,2),'application/json','axiom-prospects-backup.json');}
+function importJson(file){if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const parsed=JSON.parse(reader.result);const incoming=Array.isArray(parsed)?parsed:parsed.prospects;if(!Array.isArray(incoming))throw new Error('Backup must contain a prospects array.');prospects=incoming.map(normalizeProspect);save();refresh();alert(`Imported ${prospects.length} prospects.`);}catch(err){alert(`Import failed: ${err.message}`);}byId('importJson').value='';};reader.readAsText(file);}
+function downloadBlob(content,type,name){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();URL.revokeObjectURL(a.href);}
+function refresh(){stats();renderDueFollowUps();renderTable();}
+byId('prospectForm').addEventListener('submit',e=>{e.preventDefault();const existing=prospects.find(p=>p.id===byId('editId').value)||{};const obj={...existing,id:byId('editId').value||crypto.randomUUID(),businessName:byId('businessName').value.trim(),ownerName:byId('ownerName').value.trim(),businessType:byId('businessType').value.trim(),city:byId('city').value.trim(),website:byId('website').value.trim(),socialLink:byId('socialLink').value.trim(),email:byId('email').value.trim(),phone:byId('phone').value.trim(),source:byId('source').value,painPointGuess:byId('painPointGuess').value.trim(),aiAngle:byId('aiAngle').value.trim(),contactMethod:byId('contactMethod').value,status:byId('status').value,messageSentDate:byId('messageSentDate').value,followUpDate:byId('followUpDate').value,initialMessageDate:byId('initialMessageDate').value,followUp1Date:byId('followUp1Date').value,followUp2Date:byId('followUp2Date').value,responseDate:byId('responseDate').value,notes:byId('notes').value.trim()};const idx=prospects.findIndex(p=>p.id===obj.id);if(idx>-1)prospects[idx]=normalizeProspect(obj);else prospects.unshift(normalizeProspect(obj));save();resetForm();refresh();switchTab('prospects');});
 ['tableSearch','filterCity','filterType','filterStatus'].forEach(id=>byId(id).addEventListener('input',renderTable));
-byId('resetForm').onclick=resetForm;byId('generateMessage').onclick=()=>byId('messageOutput').value=getGeneratedMessage(byId('messageType').value);byId('resetIcp').onclick=resetIcpFilter;byId('copyIcpSummary').onclick=copyIcpSummary;byId('copyMessage').onclick=()=>copy(byId('messageOutput').value||getGeneratedMessage(byId('messageType').value));byId('exportCsv').onclick=exportCsv;byId('markDueDone').onclick=()=>{filteredProspects().forEach(p=>p.followUpDate='');save();refresh();};
+document.querySelectorAll('.note-preset').forEach(btn=>btn.addEventListener('click',()=>{const current=byId('notes').value.trim();byId('notes').value=current?`${current}\n${btn.dataset.note}`:btn.dataset.note;byId('notes').focus();}));
+byId('resetForm').onclick=resetForm;byId('generateMessage').onclick=()=>byId('messageOutput').value=getGeneratedMessage(byId('messageType').value);byId('resetIcp').onclick=resetIcpFilter;byId('copyIcpSummary').onclick=copyIcpSummary;byId('copyMessage').onclick=()=>copy(byId('messageOutput').value||getGeneratedMessage(byId('messageType').value));byId('exportCsv').onclick=exportCsv;byId('exportJson').onclick=exportJson;byId('importJson').onchange=e=>importJson(e.target.files[0]);byId('markDueDone').onclick=()=>{filteredProspects().forEach(p=>p.followUpDate='');save();refresh();};
 byId('generateFinderQuery').onclick=buildFinderQuery;byId('openGoogle').onclick=()=>openSearch(`https://www.google.com/search?q=${encodeURIComponent(buildFinderQuery())}`);byId('openMaps').onclick=()=>openSearch(`https://www.google.com/maps/search/${encodeURIComponent(byId('finderCategory').value+' '+byId('finderLocation').value)}`);byId('openFacebook').onclick=()=>openSearch(`https://www.facebook.com/search/top?q=${encodeURIComponent(byId('finderCategory').value+' '+byId('finderLocation').value)}`);byId('openLinkedIn').onclick=()=>openSearch(`https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent('owner '+byId('finderCategory').value+' '+byId('finderLocation').value)}`);byId('sendToFullForm').onclick=()=>{byId('businessName').value=byId('qcBusinessName').value;byId('ownerName').value=byId('qcOwnerName').value;byId('businessType').value=byId('qcBusinessType').value||byId('finderCategory').value;byId('city').value=byId('qcCity').value||byId('finderLocation').value;byId('website').value=byId('qcWebsite').value;byId('socialLink').value=byId('qcSocialLink').value;byId('email').value=byId('qcEmail').value;byId('phone').value=byId('qcPhone').value;byId('source').value=byId('qcSource').value||byId('finderPlatform').value;byId('notes').value=byId('qcNotes').value;switchTab('add');};
-byId('quickCaptureForm').addEventListener('submit',e=>{e.preventDefault();const icpCount=getIcpSelection().length;const icpTier=finderIcpTier(icpCount);const angle=suggestAngle();const noteBlock=`${byId('qcNotes').value.trim()}
-
-ICP Fit: ${icpCount} criteria (${icpTier})
-Suggested Angle: ${angle}`.trim();const obj={id:crypto.randomUUID(),businessName:byId('qcBusinessName').value.trim(),ownerName:byId('qcOwnerName').value.trim(),businessType:(byId('qcBusinessType').value.trim()||byId('finderCategory').value),city:(byId('qcCity').value.trim()||byId('finderLocation').value),website:byId('qcWebsite').value.trim(),socialLink:byId('qcSocialLink').value.trim(),email:byId('qcEmail').value.trim(),phone:byId('qcPhone').value.trim(),source:(byId('qcSource').value.trim()||byId('finderPlatform').value),painPointGuess:selectedPainPoints().join(', '),aiAngle:angle,contactMethod:'Other',status:'Not Contacted',messageSentDate:'',followUpDate:byId('qcFollowUpDate').value,notes:noteBlock};prospects.unshift(obj);save();refresh();byId('finderMessage').value=recommendedFinderMessage(obj);byId('quickCaptureForm').reset();});
+byId('quickCaptureForm').addEventListener('submit',e=>{e.preventDefault();const icpCount=getIcpSelection().length;const icpTier=finderIcpTier(icpCount);const angle=suggestAngle();const noteBlock=`${byId('qcNotes').value.trim()}\n\nICP Fit: ${icpCount} criteria (${icpTier})\nSuggested Angle: ${angle}`.trim();const obj=normalizeProspect({id:crypto.randomUUID(),businessName:byId('qcBusinessName').value.trim(),ownerName:byId('qcOwnerName').value.trim(),businessType:(byId('qcBusinessType').value.trim()||byId('finderCategory').value),city:(byId('qcCity').value.trim()||byId('finderLocation').value),website:byId('qcWebsite').value.trim(),socialLink:byId('qcSocialLink').value.trim(),email:byId('qcEmail').value.trim(),phone:byId('qcPhone').value.trim(),source:(byId('qcSource').value.trim()||byId('finderPlatform').value),painPointGuess:selectedPainPoints().join(', '),aiAngle:angle,contactMethod:'Other',status:'Not Contacted',followUpDate:byId('qcFollowUpDate').value,notes:noteBlock});prospects.unshift(obj);save();refresh();byId('finderMessage').value=recommendedFinderMessage(obj);byId('quickCaptureForm').reset();});
 byId('copyFinderMessage').onclick=()=>copy(byId('finderMessage').value);
-byId('resetChecklist').onclick=()=>{document.querySelectorAll('#dailyChecklist input').forEach(x=>x.checked=false);saveChecklist();};document.querySelectorAll('#dailyChecklist').forEach(()=>{});
-byId('generateSearch').onclick=()=>{const cat=byId('searchCategory').value.toLowerCase().replace(',','');const loc=byId('searchLocation').value.replace(',','');const phrases=[`${cat} ${loc}`,`${cat} near ${loc}`,`${cat} ${loc} reviews`,`${cat} ${loc} facebook`,`${cat} ${loc} owner`];byId('searchResults').innerHTML=phrases.map(p=>`<div class='card' style='padding:10px;'><div>${p}</div><div class='btn-row' style='margin-top:6px;'><button class='btn-muted' onclick='navigator.clipboard.writeText(${JSON.stringify('${p}')}.replace("${p}", ${JSON.stringify(p)}))'>Copy</button></div></div>`).join('');};
+byId('resetChecklist').onclick=()=>{document.querySelectorAll('#dailyChecklist input').forEach(x=>x.checked=false);saveChecklist();};
+byId('resetTodayTarget').onclick=()=>{document.querySelectorAll('#todayTarget input').forEach(x=>x.checked=false);saveTarget();};
+byId('generateSearch').onclick=()=>{const cat=byId('searchCategory').value.toLowerCase().replace(',','');const loc=byId('searchLocation').value.replace(',','');const phrases=[`${cat} ${loc}`,`${cat} near ${loc}`,`${cat} ${loc} reviews`,`${cat} ${loc} facebook`,`${cat} ${loc} owner`];byId('searchResults').innerHTML=phrases.map(p=>`<div class='card' style='padding:10px;'><div>${escapeHtml(p)}</div><div class='btn-row' style='margin-top:6px;'><button class='btn-muted' onclick='navigator.clipboard.writeText(${JSON.stringify(p)})'>Copy</button></div></div>`).join('');};
 const prospectTemplate=`Axiom Prospect Notes\n\nBusiness Name:\nOwner / Contact:\nBusiness Type:\nCity:\nWebsite / Social:\nSource:\n\nObserved Pain Points:\n- \n\nPossible AI System Angle:\n- \n\nRecommended Outreach Message:\n- \n\nStatus:\nFollow-Up Date:\nNotes:`;
 const auditTemplate=`Axiom AI Systems Report\n\nClient:\nBusiness:\nDate:\n\n1. Business Snapshot\n\n2. Current Workflow Problems\n\n3. Repetitive Tasks Identified\n\n4. AI Opportunities\n\n5. Automation Opportunities\n\n6. Recommended First System\n\n7. Suggested Tools\n\n8. Estimated Time Saved\n\n9. 30-Day Implementation Roadmap\n\n10. Recommended Next Step`;
 byId('prospectTemplate').textContent=prospectTemplate;byId('auditTemplate').textContent=auditTemplate;byId('copyProspectTemplate').onclick=()=>copy(prospectTemplate);byId('copyAuditTemplate').onclick=()=>copy(auditTemplate);
-populateSelectors();loadChecklist();document.querySelectorAll('#dailyChecklist input').forEach(x=>x.addEventListener('input',saveChecklist));document.querySelectorAll('#icpList input').forEach(x=>x.addEventListener('input', ()=>{updateIcpFit();updateFinderIcp();}));document.querySelectorAll('#painPointList input').forEach(x=>x.addEventListener('input',suggestAngle));byId('finderCategory').addEventListener('input',suggestAngle);byId('finderLocation').value=locations[0];byId('finderCategory').value=finderCategories[0];byId('messageOutput').value=getGeneratedMessage('general');updateIcpFit();updateFinderIcp();suggestAngle();refresh();
+populateSelectors();loadChecklist();loadTarget();document.querySelectorAll('#dailyChecklist input').forEach(x=>x.addEventListener('input',saveChecklist));document.querySelectorAll('#todayTarget input').forEach(x=>x.addEventListener('input',saveTarget));document.querySelectorAll('#icpList input').forEach(x=>x.addEventListener('input',()=>{updateIcpFit();updateFinderIcp();}));document.querySelectorAll('#painPointList input').forEach(x=>x.addEventListener('input',suggestAngle));byId('finderCategory').addEventListener('input',suggestAngle);byId('finderLocation').value=locations[0];byId('finderCategory').value=finderCategories[0];byId('messageOutput').value=getGeneratedMessage('general');updateIcpFit();updateFinderIcp();suggestAngle();refresh();
 </script>
 </body>
 </html>
