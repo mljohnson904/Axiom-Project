@@ -1,40 +1,25 @@
-# Axiom AI Systems Project Hub
+# Axiom Project Workspace
 
-This repo is the command center for Axiom AI Systems projects.
+This repository contains planning docs and project workstreams for multiple Axiom initiatives.
 
-Use this hub to track product ideas, client-facing tools, operating systems, launch tasks, and future standalone repositories.
+## Projects
+- `projects/prospect-builder.md`
+- `projects/client-intake.md`
+- `projects/operations.md`
+- `projects/ai-systems-audit.md`
+- `projects/axiom-site.md`
 
-## Current Projects
+## New Isolated App Workspace
+To avoid interfering with Prospect Builder and other workstreams, the **Axiom Follow-Up Command Center** app now lives in its own isolated project folder:
 
-| Project | Purpose | Status |
-| --- | --- | --- |
-| Prospect Builder | Mobile-first local prospect tracking and outreach helper | Active |
-| Axiom Site | Public-facing brand and offer website | Planned |
-| Client Intake | Intake forms and client onboarding flow | Planned |
-| AI Systems Audit | Repeatable audit process and deliverables | Planned |
-| Operations | Internal workflows, checklists, and business systems | Active |
+- `products/follow-up-command-center/`
 
-## Working Model
+Run it from that folder:
 
-Start projects here while they are small. When an app becomes large enough to stand alone, split it into its own repository and keep this hub as the map.
+```bash
+cd products/follow-up-command-center
+npm install
+npm run dev
+```
 
-Recommended future repo pattern:
-
-- `axiom-prospect-builder`
-- `axiom-site`
-- `axiom-client-intake`
-- `axiom-ai-systems-audit`
-- `axiom-operations`
-
-## Repo Map
-
-- `projects/` contains project briefs and operating notes.
-- `docs/` contains setup, GitHub workflow, and repo-splitting guidance.
-- GitHub Issues are used as the active task board.
-
-## Immediate Priorities
-
-1. Improve Prospect Builder with practical daily prospecting automations.
-2. Create a lightweight Axiom website plan.
-3. Define the AI Systems Audit offer and intake flow.
-4. Build simple operating checklists for daily execution.
+Then open `http://localhost:3000`.
