@@ -1,12 +1,19 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { checklistItems, seedLeads, seedTasks, seedTemplates } from "@/lib/seedData";
 import { Lead, LeadStatus, Priority, Task, TaskStatus, Template } from "@/lib/types";
 
 const leadStatuses: LeadStatus[] = ["New", "Contacted", "Follow-up Needed", "Waiting on Customer", "Won", "Lost"];
 const taskStatuses: TaskStatus[] = ["Not Started", "In Progress", "Waiting", "Completed"];
 const priorities: Priority[] = ["Low", "Medium", "High"];
+
+type StoredAxiomData = {
+  leads?: Lead[];
+  tasks?: Task[];
+  templates?: Template[];
+  checklist?: Record<string, boolean>;
+};
 
 export default function Home() {
   const [leads, setLeads] = useState<Lead[]>(seedLeads);
@@ -16,19 +23,37 @@ export default function Home() {
   const [leadFilter, setLeadFilter] = useState<LeadStatus | "All">("All");
   const [taskFilter, setTaskFilter] = useState<TaskStatus | "All">("All");
   const [priorityFilter, setPriorityFilter] = useState<Priority | "All">("All");
+  const hasLoadedSavedData = useRef(false);
 
   useEffect(() => {
     const saved = localStorage.getItem("axiom-v1");
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      setLeads(parsed.leads ?? seedLeads);
-      setTasks(parsed.tasks ?? seedTasks);
-      setTemplates(parsed.templates ?? seedTemplates);
-      setChecklist(parsed.checklist ?? {});
+    if (!saved) {
+      hasLoadedSavedData.current = true;
+      return;
     }
+
+    const frame = window.requestAnimationFrame(() => {
+      try {
+        const parsed = JSON.parse(saved) as StoredAxiomData;
+        setLeads(parsed.leads ?? seedLeads);
+        setTasks(parsed.tasks ?? seedTasks);
+        setTemplates(parsed.templates ?? seedTemplates);
+        setChecklist(parsed.checklist ?? {});
+      } catch {
+        localStorage.removeItem("axiom-v1");
+      } finally {
+        hasLoadedSavedData.current = true;
+      }
+    });
+
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {
+    if (!hasLoadedSavedData.current) {
+      return;
+    }
+
     localStorage.setItem("axiom-v1", JSON.stringify({ leads, tasks, templates, checklist }));
   }, [leads, tasks, templates, checklist]);
 
