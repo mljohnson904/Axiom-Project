@@ -8,6 +8,21 @@ const STORAGE_KEY = "axiom-v1";
 const leadStatuses: LeadStatus[] = ["New", "Contacted", "Follow-up Needed", "Waiting on Customer", "Won", "Lost"];
 const taskStatuses: TaskStatus[] = ["Not Started", "In Progress", "Waiting", "Completed"];
 const priorities: Priority[] = ["Low", "Medium", "High"];
+const workflowSteps = [
+  "Add a lead or client request",
+  "Set the next action",
+  "Choose a follow-up or due date",
+  "Review today’s priorities",
+  "Follow up before anything gets missed"
+];
+const builtFor = [
+  "Virtual assistants",
+  "Small business owners",
+  "Agencies",
+  "Sales teams",
+  "Recruiters",
+  "Customer support workflows"
+];
 
 type StoredAxiomData = {
   leads?: Lead[];
@@ -342,14 +357,18 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-stone-50 text-slate-950">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-6 md:px-8 md:py-10">
-        <header className="grid gap-5 rounded-lg border border-slate-800 bg-slate-950 p-5 text-white shadow-lg md:grid-cols-[1fr_auto] md:items-end md:p-6">
+        <header className="grid gap-6 rounded-lg border border-slate-800 bg-slate-950 p-5 text-white shadow-lg md:grid-cols-[1fr_auto] md:items-end md:p-7">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-amber-300">{todayLabel}</p>
-            <h1 className="mt-2 text-3xl font-bold tracking-normal md:text-4xl">Axiom Follow-Up Command Center</h1>
-            <p className="mt-2 max-w-2xl text-slate-300">
-              A simple morning workflow dashboard for leads, follow-ups, client requests, and daily tasks.
+            <p className="text-sm font-semibold uppercase tracking-wide text-amber-300">
+              Axiom Follow-Up Command Center · {todayLabel}
             </p>
-            <p className="mt-3 text-sm text-slate-400">
+            <h1 className="mt-3 max-w-4xl text-3xl font-bold tracking-tight md:text-5xl">
+              Keep every lead, follow-up, and client request from falling through the cracks.
+            </h1>
+            <p className="mt-4 max-w-3xl text-base leading-7 text-slate-300 md:text-lg">
+              A simple command center for tracking follow-ups, open tasks, next actions, and what needs attention today.
+            </p>
+            <p className="mt-4 text-sm text-slate-400">
               V1 demo: no login or backend yet. Data saves locally in this browser.
               {lastSavedAt ? ` Last saved at ${lastSavedAt}.` : ""}
             </p>
@@ -361,6 +380,43 @@ export default function Home() {
             Reset Demo Data
           </button>
         </header>
+
+        <section className="grid gap-4 rounded-lg border border-slate-200 bg-white p-4 shadow-sm md:p-5">
+          <div className="grid gap-2 md:grid-cols-[1fr_auto] md:items-end">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-amber-700">How it works</p>
+              <h2 className="mt-1 text-2xl font-bold">From incoming request to completed follow-up</h2>
+              <p className="mt-1 text-sm text-slate-600">A lightweight workflow that makes the next step and deadline obvious at a glance.</p>
+            </div>
+            <p className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-sm font-semibold text-slate-600">
+              Review in under 10 seconds
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {workflowSteps.map((step, index) => (
+              <div key={step} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-950 text-sm font-bold text-white">
+                  {index + 1}
+                </span>
+                <p className="mt-3 text-sm font-semibold text-slate-800">{step}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="grid gap-3 rounded-lg border border-slate-200 bg-white p-4 shadow-sm md:grid-cols-[auto_1fr] md:items-center md:p-5">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">Built for</p>
+            <h2 className="text-xl font-bold">Teams that cannot afford missed replies</h2>
+          </div>
+          <div className="flex flex-wrap gap-2 md:justify-end">
+            {builtFor.map((audience) => (
+              <Badge key={audience} className="border-slate-200 bg-slate-50 text-slate-700">
+                {audience}
+              </Badge>
+            ))}
+          </div>
+        </section>
 
         <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {[
